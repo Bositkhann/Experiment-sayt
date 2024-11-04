@@ -68,7 +68,8 @@ main {
 
 .course-list {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Разделение курсов */
     margin-top: 20px;
 }
 
@@ -78,12 +79,14 @@ main {
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 30%;
+    margin-bottom: 30px; /* Отступ между курсами по вертикали */
 }
 
 .course button {
     margin-top: 10px;
 }
 
+/* About and Contact Section Styles */
 .about, .contact {
     margin-top: 40px;
     padding: 20px;
