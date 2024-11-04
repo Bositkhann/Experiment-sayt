@@ -88,5 +88,44 @@
     <footer>
         <p>&copy; 2024 Educational Platform. All rights reserved.</p>
     </footer>
+    <script>
+    // Функция для получения курсов с сервера
+    async function fetchCourses() {
+        try {
+            const response = await fetch('http://localhost:3000/api/courses'); // Замените на URL вашего сервера
+            const courses = await response.json();
+            displayCourses(courses);
+        } catch (error) {
+            console.error('Error fetching courses:', error);
+        }
+    }
+
+    // Функция для отображения курсов на странице
+    function displayCourses(courses) {
+        const courseList = document.querySelector('.course-list');
+        courseList.innerHTML = ''; // Очищаем текущий список курсов
+
+        courses.forEach(course => {
+            const courseDiv = document.createElement('div');
+            courseDiv.classList.add('course');
+            courseDiv.innerHTML = `
+                <h3>${course.name}</h3>
+                <p>${course.description}</p>
+                <button onclick="startCourse(${course.id})">Start Course</button>
+            `;
+            courseList.appendChild(courseDiv);
+        });
+    }
+
+    // Функция для начала курса
+    function startCourse(courseId) {
+        alert('Starting course with ID: ' + courseId);
+        // Здесь можно добавить логику для начала курса
+    }
+
+    // Вызываем функцию для загрузки курсов при загрузке страницы
+    window.onload = fetchCourses;
+</script>
+
 </body>
 </html>
